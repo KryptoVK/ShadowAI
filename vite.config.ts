@@ -25,17 +25,17 @@ export default defineConfig({
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom'],
-          'lucide': ['lucide-react'],
-          'terminal': ['./src/components/Terminal.tsx', './src/utils/commandHandler.ts'],
-          'video': ['./src/components/VideoBackground.tsx', './src/components/VideoControls.tsx', './src/components/AudioControls.tsx']
+          'lucide': ['lucide-react']
         }
       }
     },
     reportCompressedSize: false,
-    chunkSizeWarningLimit: 1000
+    chunkSizeWarningLimit: 1000,
+    sourcemap: false,
+    cssCodeSplit: true
   },
   optimizeDeps: {
-    include: ['react', 'react-dom'],
-    exclude: ['lucide-react']
+    include: ['react', 'react-dom', 'lucide-react'],
+    exclude: []
   }
 });
