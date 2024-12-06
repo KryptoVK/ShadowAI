@@ -5,7 +5,7 @@ import { TerminalPrompt } from './TerminalPrompt';
 import { Command } from '../types/terminal';
 
 const Terminal: React.FC = () => {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState<string>('');
   const [commands, setCommands] = useState<Command[]>([]);
   const terminalRef = useRef<HTMLDivElement>(null);
 
