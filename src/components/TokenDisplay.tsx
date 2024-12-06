@@ -4,7 +4,7 @@ import { Key, Check, Copy } from 'lucide-react';
 const TOKEN = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
 
 const TokenDisplay: React.FC = () => {
-  const [copied, setCopied] = useState<boolean>(false);
+  const [copied, setCopied] = useState(false);
 
   const handleCopy = useCallback(async () => {
     try {
@@ -25,6 +25,7 @@ const TokenDisplay: React.FC = () => {
       role="button"
       tabIndex={0}
       onKeyDown={(e) => e.key === 'Enter' && handleCopy()}
+      aria-label="Copy token"
     >
       <Key className="w-4 h-4 text-green-500/60 group-hover:text-green-500/80 transition-all" />
       <span className="font-mono tracking-wider">TOKEN CA: {TOKEN}</span>
