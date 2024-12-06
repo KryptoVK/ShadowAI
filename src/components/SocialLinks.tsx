@@ -5,7 +5,7 @@ const SocialLinks: React.FC = () => {
   return (
     <div className="mt-8 flex justify-center gap-4">
       <a
-        href="https://twitter.com/Shadow_AI"
+        href="https://x.com/ShadowMemeIA"
         target="_blank"
         rel="noopener noreferrer"
         className="text-green-500 hover:text-green-400 transition-colors"
@@ -13,7 +13,7 @@ const SocialLinks: React.FC = () => {
         <Twitter className="w-6 h-6" />
       </a>
       <a
-        href="https://shadow-ai.com"
+        href="https://shadow-ai.xyz"
         target="_blank"
         rel="noopener noreferrer"
         className="text-green-500 hover:text-green-400 transition-colors"
