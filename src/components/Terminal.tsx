@@ -4,7 +4,7 @@ import { TerminalHeader } from './TerminalHeader';
 import { TerminalPrompt } from './TerminalPrompt';
 import { Command } from '../types/terminal';
 
-export default function Terminal() {
+const Terminal: React.FC = () => {
   const [input, setInput] = useState('');
   const [commands, setCommands] = useState<Command[]>([]);
   const terminalRef = useRef<HTMLDivElement>(null);
@@ -67,4 +67,6 @@ export default function Terminal() {
       </div>
     </div>
   );
-}
+};
+
+export default Terminal;
