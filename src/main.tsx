@@ -4,17 +4,16 @@ import App from './App';
 import './index.css';
 
 const rootElement = document.getElementById('root');
-if (!rootElement) throw new Error('Failed to find the root element');
-
-const root = createRoot(rootElement);
-
-// Remove StrictMode in production to avoid double-rendering
-if (import.meta.env.DEV) {
-  root.render(
-    <StrictMode>
-      <App />
-    </StrictMode>
-  );
-} else {
-  root.render(<App />);
+if (!rootElement) {
+  const root = document.createElement('div');
+  root.id = 'root';
+  document.body.appendChild(root);
 }
+
+const root = createRoot(rootElement || document.getElementById('root')!);
+
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
