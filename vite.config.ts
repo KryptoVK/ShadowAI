@@ -18,11 +18,16 @@ export default defineConfig({
     target: 'esnext',
     minify: 'esbuild',
     cssMinify: true,
+    modulePreload: {
+      polyfill: false
+    },
     rollupOptions: {
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom'],
-          'lucide': ['lucide-react']
+          'lucide': ['lucide-react'],
+          'terminal': ['./src/components/Terminal.tsx', './src/utils/commandHandler.ts'],
+          'video': ['./src/components/VideoBackground.tsx', './src/components/VideoControls.tsx', './src/components/AudioControls.tsx']
         }
       }
     },
