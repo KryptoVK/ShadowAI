@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,9 +10,36 @@
     <!-- Preload critical assets -->
     <link rel="preconnect" href="https://assets.mixkit.co">
     <link rel="dns-prefetch" href="https://assets.mixkit.co">
+    <!-- Critical CSS -->
+    <style>
+      body { 
+        background: #000;
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+      .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: #00ff00;
+        font-family: monospace;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+    <link rel="preload" href="/src/index.css" as="style">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="loading">Initializing Shadow AI...</div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
