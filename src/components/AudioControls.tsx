@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 
 interface AudioControlsProps {
@@ -6,7 +6,7 @@ interface AudioControlsProps {
   onToggleMute: () => void;
 }
 
-export function AudioControls({ isMuted, onToggleMute }: AudioControlsProps) {
+export const AudioControls: React.FC<AudioControlsProps> = memo(({ isMuted, onToggleMute }) => {
   return (
     <button
       onClick={onToggleMute}
@@ -25,4 +25,4 @@ export function AudioControls({ isMuted, onToggleMute }: AudioControlsProps) {
       </span>
     </button>
   );
-}
+});
