@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Terminal as TerminalIcon } from 'lucide-react';
 
-export function TerminalHeader() {
+export const TerminalHeader: React.FC = memo(() => {
   return (
     <div className="flex items-center gap-2 mb-4 border-b border-green-500/30 pb-2">
       <TerminalIcon className="w-5 h-5 text-green-500" />
@@ -9,4 +9,4 @@ export function TerminalHeader() {
       <span className="ml-auto text-green-500/50 text-sm">Type /help for commands</span>
     </div>
   );
-}
+});
