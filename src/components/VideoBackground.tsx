@@ -3,7 +3,7 @@ import { Loader2 } from 'lucide-react';
 import { AudioControls } from './AudioControls';
 import { VideoControls } from './VideoControls';
 
-export function VideoBackground() {
+export const VideoBackground: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
@@ -57,19 +57,15 @@ export function VideoBackground() {
           <video
             ref={videoRef}
             loop
-            muted={false}
+            muted={isMuted}
             playsInline
             onLoadedData={handleLoadedData}
             onError={handleError}
             className="w-full h-full object-cover"
           >
             <source
-              src="/VKrypto.mp4"
+              src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-city-11748-large.mp4"
               type="video/mp4"
-            />
-            <source
-              src="/VKrypto.mp4"
-              type="video/webm"
             />
           </video>
           <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 to-transparent" />
@@ -81,4 +77,4 @@ export function VideoBackground() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/30" />
     </div>
   );
-}
+};
