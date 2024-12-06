@@ -64,7 +64,7 @@ export const VideoBackground: React.FC = () => {
             className="w-full h-full object-cover"
           >
             <source
-              src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-city-11748-large.mp4"
+              src="/VKrypto.mp4"
               type="video/mp4"
             />
           </video>
