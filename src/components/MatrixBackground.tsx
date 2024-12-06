@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-export function MatrixBackground() {
+const MatrixBackground: React.FC = () => {
   return (
     <>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,0,0.1),rgba(0,0,0,0.8))]" />
@@ -22,4 +22,6 @@ export function MatrixBackground() {
       </div>
     </>
   );
-}
+};
+
+export default memo(MatrixBackground);
