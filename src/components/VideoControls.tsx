@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Play, Pause } from 'lucide-react';
 
 interface VideoControlsProps {
@@ -6,7 +6,7 @@ interface VideoControlsProps {
   onTogglePlay: () => void;
 }
 
-export function VideoControls({ isPlaying, onTogglePlay }: VideoControlsProps) {
+export const VideoControls: React.FC<VideoControlsProps> = memo(({ isPlaying, onTogglePlay }) => {
   return (
     <button
       onClick={onTogglePlay}
@@ -25,4 +25,4 @@ export function VideoControls({ isPlaying, onTogglePlay }: VideoControlsProps) {
       </span>
     </button>
   );
-}
+});
