@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, memo } from 'react';
 import { handleCommand } from '../utils/commandHandler';
 import { TerminalHeader } from './TerminalHeader';
 import { TerminalPrompt } from './TerminalPrompt';
@@ -16,14 +16,11 @@ const Terminal: React.FC = () => {
       return;
     }
     
-    const outputLines = result.split('\n');
-    
-    const newCommands: Command[] = [
+    setCommands(prev => [
+      ...prev,
       { input: cmd, output: '' },
-      { input: '', output: outputLines.join('\n') }
-    ];
-    
-    setCommands(prev => [...prev, ...newCommands]);
+      { input: '', output: result }
+    ]);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -69,4 +66,4 @@ const Terminal: React.FC = () => {
   );
 };
 
-export default Terminal;
+export default memo(Terminal);
