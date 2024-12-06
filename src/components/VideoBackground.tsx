@@ -1,35 +1,38 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback, memo } from 'react';
 import { Loader2 } from 'lucide-react';
 import { AudioControls } from './AudioControls';
 import { VideoControls } from './VideoControls';
 
-export const VideoBackground: React.FC = () => {
+const VideoBackground: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const handleLoadedData = () => {
+  const handleLoadedData = useCallback(() => {
     setIsLoading(false);
     if (videoRef.current) {
-      videoRef.current.muted = false;
+      videoRef.current.play().catch(() => {
+        // Autoplay failed, do nothing
+      });
+      setIsPlaying(true);
     }
-  };
+  }, []);
 
-  const handleError = () => {
+  const handleError = useCallback(() => {
     setIsLoading(false);
     setError(true);
-  };
+  }, []);
 
-  const handleToggleMute = () => {
+  const handleToggleMute = useCallback(() => {
     if (videoRef.current) {
       videoRef.current.muted = !videoRef.current.muted;
       setIsMuted(!isMuted);
     }
-  };
+  }, [isMuted]);
 
-  const handleTogglePlay = () => {
+  const handleTogglePlay = useCallback(() => {
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();
@@ -38,7 +41,7 @@ export const VideoBackground: React.FC = () => {
       }
       setIsPlaying(!isPlaying);
     }
-  };
+  }, [isPlaying]);
 
   return (
     <div className="relative bg-black/50 h-full">
@@ -59,6 +62,7 @@ export const VideoBackground: React.FC = () => {
             loop
             muted={isMuted}
             playsInline
+            preload="auto"
             onLoadedData={handleLoadedData}
             onError={handleError}
             className="w-full h-full object-cover"
@@ -78,3 +82,5 @@ export const VideoBackground: React.FC = () => {
     </div>
   );
 };
+
+export default memo(VideoBackground);
