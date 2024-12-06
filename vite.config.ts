@@ -4,19 +4,15 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: '0.0.0.0',
-    port: 10000,
-    strictPort: true,
+    port: 5173,
+    host: true,
     hmr: {
-      protocol: 'ws',
-      host: 'localhost',
-      port: 10000
+      clientPort: 443
     }
   },
   preview: {
-    host: '0.0.0.0',
-    port: 10000,
-    strictPort: true
+    port: 5173,
+    host: true
   },
   build: {
     target: 'esnext',
